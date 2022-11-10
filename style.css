@@ -86,9 +86,6 @@ button {
     border-radius: 8px;
 }
 
-.search-result-container {
-}
-
 .search-result-img {
     display: block;
     padding-top: 2%;
@@ -96,6 +93,7 @@ button {
     margin-right: auto;
     width: 40%;
     object-fit: cover;
+    visibility: hidden;
 }
 
 footer {

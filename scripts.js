@@ -41,6 +41,8 @@ function fetchTheGif() {
 
     console.log(runApi);
 
+    searchResultImg.style.visibility = "visible";
+
     fetch(runApi, {mode: "cors"})
     .then((response) => {
         return response.json();

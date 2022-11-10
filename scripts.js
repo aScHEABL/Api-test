@@ -16,7 +16,7 @@ function checkWhitespace() {
         (whiteSpaceAtTheBeginning.test(searchKeyword)) ? replaceWhiteSpaceAtTheBeginning(searchKeyword): false;
         (whiteSpaceAtTheEnd.test(searchKeyword)) ? replaceWhiteSpaceAtTheEnd(searchKeyword): false;
         (whiteSpaceInTheMiddle.test(searchKeyword)) ? replaceWhiteSpaceWithPlus(searchKeyword) : false;
-        console.log(`Search for ${searchKeyword}`);
+        console.log(`Search for "${searchKeyword}"`);
         return true;
     }
 }

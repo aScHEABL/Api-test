@@ -34,10 +34,10 @@ function replaceWhiteSpaceWithPlus(string) {
 }
 
 function fetchTheGif() {
-    const apiKey = "api_key=" + "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
+    const apiKey = "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
     const weirdnessValue = "0";
     const apiUrl = "https://api.giphy.com/v1/gifs/translate?";
-    const runApi = apiUrl + apiKey + "&s=" + searchKeyword + "&weirdness=" + weirdnessValue;
+    const runApi = apiUrl + "api_key=" + apiKey + "&s=" + searchKeyword + "&weirdness=" + weirdnessValue;
 
     console.log(runApi);
 

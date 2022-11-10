@@ -46,6 +46,11 @@ a:link {
     color: var(--white);
 }
 
+a:visited {
+    text-decoration: none;
+    color: var(--white);
+}
+
 main {
     height: calc(100% - 10% - var(--header-footer-height) * 2);
 }

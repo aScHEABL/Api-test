@@ -1,37 +1,41 @@
-console.log("Hello world!");
-
 const searchResultImg = document.querySelector("[data-search-result]");
 const searchButton = document.querySelector("[data-search-button]");
 const searchInput = document.querySelector("[data-search-input]");
 
-let searchKeyword = " cat meme ";
+let searchKeyword = searchInput.value;
+// regExp
+const whiteSpaceAtTheBeginning = /(^\s)/;
+const whiteSpaceAtTheEnd = /(\s$)/;
+const whiteSpaceInTheMiddle = /\b\s+\b/;
 
 function checkWhitespace(string) {
-    const ifWhiteSpaceAtTheBeginning = /(^\s)/.test(string);
-    const ifWhiteSpaceAtTheEnd = /(\s$)/.test(string);
-    (ifWhiteSpaceAtTheBeginning) ? replaceWhiteSpaceAtTheBeginning(string): false;
-    (ifWhiteSpaceAtTheEnd) ? replaceWhiteSpaceAtTheEnd(string): false;
+    (whiteSpaceAtTheBeginning.test(string)) ? replaceWhiteSpaceAtTheBeginning(searchKeyword): false;
+    (whiteSpaceAtTheEnd.test(string)) ? replaceWhiteSpaceAtTheEnd(searchKeyword): false;
+    (whiteSpaceInTheMiddle.test(string)) ? replaceWhiteSpaceWithPlus(searchKeyword) : false;
+    console.log(searchKeyword);
 }
 
 function replaceWhiteSpaceAtTheBeginning(string) {
-    searchKeyword = string.replace(/(^\s)/, "");
-    console.log(searchKeyword);
+    searchKeyword = string.replace(whiteSpaceAtTheBeginning, "");
 }
 
 function replaceWhiteSpaceAtTheEnd(string) {
-    searchKeyword = string.replace(/(\s$)/, "");
-    console.log(searchKeyword);
+    searchKeyword = string.replace(whiteSpaceAtTheEnd, "");
+}
+
+function replaceWhiteSpaceWithPlus(string) {
+    searchKeyword = string.replace(whiteSpaceInTheMiddle, "+");
 }
 
 function getGifApi() {
-    // let searchKeyword = searchInput.value;
     const apiKey = "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
     const weirdnessValue = "0";
     const apiUrl = "https://api.giphy.com/v1/gifs/translate?";
+    const runApi = apiUrl + apiKey + "&s=" + searchKeyword + "weirdness=" + weirdnessValue;
 
-    searchKeyword
-    console.log(apiUrl + apiKey);
+    
+    console.log(runApi);
 }
 
-// getGifApi();
 checkWhitespace(searchKeyword);
+getGifApi();

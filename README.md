@@ -1,4 +1,4 @@
-# Api-test 
+# Giphy-api-demo 
 
 This is a API test demo using [giphy](https://giphy.com/) service <br>
 

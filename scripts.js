@@ -4,7 +4,6 @@ const hornyButton = document.querySelector("[data-horny-button]");
 const searchInput = document.querySelector("[data-search-input]");
 
 let searchKeyword = "";
-let hornyKeyword = "";
 // regExp
 const whiteSpaceAtTheBeginning = /(^\s)/;
 const whiteSpaceAtTheEnd = /(\s$)/;
@@ -56,4 +55,25 @@ function fetchTheGif() {
 
 searchButton.addEventListener("click", () => {
     (checkWhitespace()) ? fetchTheGif() : console.log("Search input is empty.");
+})
+
+hornyButton.addEventListener("click", (e) => {
+    const hornyKeyword = "horny";
+    const apiKey = "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
+    const weirdnessValue = "5";
+    const apiUrl = "https://api.giphy.com/v1/gifs/translate?";
+    const runApi = apiUrl + "api_key=" + apiKey + "&s=" + hornyKeyword + "&weirdness=" + weirdnessValue;
+
+    console.log("The horny button has been clicked.");
+
+    searchResultImg.style.visibility = "visible";
+
+    fetch(runApi, {mode: "cors"})
+    .then((response) => {
+        return response.json();
+    })
+    .then((response) => {
+        searchResultImg.src = response.data.images.original.url;
+    })
+
 })

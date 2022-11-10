@@ -1,8 +1,10 @@
 const searchResultImg = document.querySelector("[data-search-result]");
 const searchButton = document.querySelector("[data-search-button]");
+const hornyButton = document.querySelector("[data-horny-button]");
 const searchInput = document.querySelector("[data-search-input]");
 
 let searchKeyword = "";
+let hornyKeyword = "";
 // regExp
 const whiteSpaceAtTheBeginning = /(^\s)/;
 const whiteSpaceAtTheEnd = /(\s$)/;

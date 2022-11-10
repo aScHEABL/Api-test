@@ -51,6 +51,9 @@ function fetchTheGif() {
     .then((response) => {
         searchResultImg.src = response.data.images.original.url;
     })
+    .catch((error) => {
+        console.error("Error:", error);
+    })
 }
 
 searchButton.addEventListener("click", () => {
@@ -75,5 +78,7 @@ hornyButton.addEventListener("click", (e) => {
     .then((response) => {
         searchResultImg.src = response.data.images.original.url;
     })
-
+    .catch((error) => {
+        console.error("Error:", error);
+    })
 })

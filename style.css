@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 :root {
     --white: white;
     --black: black;
@@ -9,6 +11,7 @@
 *, *::before, *::after {
     margin: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 body {

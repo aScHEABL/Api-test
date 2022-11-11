@@ -34,51 +34,31 @@ function replaceWhiteSpaceWithPlus(string) {
     searchKeyword = string.replaceAll(whiteSpaceInTheMiddle, "+");
 }
 
-function fetchTheGif() {
-    const apiKey = "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
-    const weirdnessValue = "0";
-    const apiUrl = "https://api.giphy.com/v1/gifs/translate?";
-    const runApi = apiUrl + "api_key=" + apiKey + "&s=" + searchKeyword + "&weirdness=" + weirdnessValue;
+async function fetchTheGif(keyword) {
+    try {
+        const apiKey = "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
+        const weirdnessValue = "0";
+        const apiUrl = "https://api.giphy.com/v1/gifs/translate?";
+        const runApi = apiUrl + "api_key=" + apiKey + "&s=" + keyword + "&weirdness=" + weirdnessValue;
 
-    console.log(runApi);
+        console.log(runApi);
 
-    searchResultImg.style.visibility = "visible";
+        searchResultImg.style.visibility = "visible";
 
-    fetch(runApi, {mode: "cors"})
-    .then((response) => {
-        return response.json();
-    })
-    .then((response) => {
-        searchResultImg.src = response.data.images.original.url;
-    })
-    .catch((error) => {
+        const response = await fetch(runApi, {mode: "cors"});
+        const gifData = await response.json();
+        searchResultImg.src = gifData.data.images.original.url;
+
+    } catch (error) {
         console.error("Error:", error);
-    })
+    }
 }
 
 searchButton.addEventListener("click", () => {
-    (checkWhitespace()) ? fetchTheGif() : console.log("Search input is empty.");
+    (checkWhitespace()) ? fetchTheGif(searchKeyword) : console.log("Search input is empty.");
 })
 
-hornyButton.addEventListener("click", (e) => {
-    const hornyKeyword = "horny";
-    const apiKey = "A28osyX29BlXhy00UYwX2Y1tMISNBsUb";
-    const weirdnessValue = "5";
-    const apiUrl = "https://api.giphy.com/v1/gifs/translate?";
-    const runApi = apiUrl + "api_key=" + apiKey + "&s=" + hornyKeyword + "&weirdness=" + weirdnessValue;
-
+hornyButton.addEventListener("click", () => {
+    fetchTheGif("horny");
     console.log("The horny button has been clicked.");
-
-    searchResultImg.style.visibility = "visible";
-
-    fetch(runApi, {mode: "cors"})
-    .then((response) => {
-        return response.json();
-    })
-    .then((response) => {
-        searchResultImg.src = response.data.images.original.url;
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    })
 })
